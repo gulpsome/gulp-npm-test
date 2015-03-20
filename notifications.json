@@ -1,0 +1,12 @@
+{
+  "test": {
+    "extends": "default",
+    "success": {"message": "The tests have passed."},
+    "failure": {"message": "Tests fail!"}
+  },
+  "test-part": {
+    "extends": "default",
+    "success": {"message": "The requested tests have passed."},
+    "failure": {"message": "Some tests fail!"}
+  }
+}

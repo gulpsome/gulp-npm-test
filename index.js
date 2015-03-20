@@ -1,4 +1,5 @@
 var path = require('path')
+var merge = require('lodash.merge')
 var run = require('childish-process')
 var args = require('yargs')
   .string("t").alias("t", "--test").describe("t", "tell gulp what to test")
@@ -10,10 +11,14 @@ module.exports = function (gulp, opts) {
   o.testCmd = o.testCmd || 'npm test'
   o.testsRe = o.testsRe || /\.js$/
   o.templateFull = o.templateFull || 'test'
-  o.templatePart = o.templatePart || o.templateFull
-  if (o.templates) {
-    run = run({childish: {templates: require(path.join(process.cwd(), o.templates))}})
-  }
+  o.templatePart = o.templatePart || 'test-part'
+  run = run({
+    childish: {
+      templates: merge({},
+      require(path.join(__dirname, './notifications.json')),
+      (o.templates) ? require(path.join(process.cwd(), o.templates)) : {})
+    }
+  })
 
   function test(what) {
     var cmd = o.testCmd
