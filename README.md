@@ -1,11 +1,13 @@
 # gulp-npm-test
 
 A gulp task to run tests, defaults to `npm test`,
-with automatic notifications + various options / possibilities...
+with automatic notifications + various options / configuration possibilities...
 
 ## Use
 
 [![NPM](https://nodei.co/npm/gulp-npm-test.png?mini=true)](https://www.npmjs.org/package/gulp-npm-test)
+
+As simple as it gets:
 
 ```javascript
 var gulp = require('gulp')
