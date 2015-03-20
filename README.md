@@ -1,6 +1,7 @@
 # gulp-npm-test
 
-A gulp task to run tests, usually `npm test`, with various options...
+A gulp task to run tests, defaults to `npm test`,
+with automatic notifications + various options / possibilities...
 
 ## Use
 
@@ -25,7 +26,7 @@ var test = require('gulp-npm-test')(gulp, {
 })
 ```
 
-All of the above options are _optional_.
+All of the above options are _optional_ if the defaults turn out good-enough.
 One could reuse the test var from above to setup a watch-and-test task:
 
 ```javascript
@@ -42,6 +43,8 @@ that would be ok with it:
 ```shell
 gulp test -t test/some.spec.coffee
 ```
+
+Happy testing!
 
 ## License
 
