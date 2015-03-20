@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+  - iojs
+branches:
+  only:
+    - test
+    - active
+    - master
+install:
+  - npm install
+  - npm i -g batshit
+  - cd test && npm install
+notifications:
+  email:
+    recipients:
+      - om@soundsapiens.com
+    on_success: change
+    on_failure: always

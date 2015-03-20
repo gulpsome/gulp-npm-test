@@ -26,11 +26,15 @@
     "lodash.merge": "^3.0.3",
     "yargs": "^3.5.4"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "batshit": "0.1.0-1"
+  },
   "jshintConfig": {
     "asi": true
   },
-  "scripts": {},
+  "scripts": {
+    "test": "batshit -t test"
+  },
   "engines": {
     "node": ">= 0.10.0"
   },
