@@ -1,5 +1,7 @@
 language: node_js
 node_js:
+  - 0.10
+  - 0.12
   - iojs
 branches:
   only:
@@ -7,9 +9,7 @@ branches:
     - active
     - master
 install:
-  - npm install
-  - npm i -g batshit
-  - cd test && npm install
+  - ./install.sh
 notifications:
   email:
     recipients:
