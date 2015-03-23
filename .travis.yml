@@ -1,18 +1,15 @@
 language: node_js
 node_js:
   - 0.10
+  - 0.12
+  - iojs
 branches:
   only:
     - test
     - active
     - master
 install:
-  - npm install
-  - npm install -g batshit gulp
-  - cd test && npm install
-  - cd ..
-  - mkdir test/tmp
-  - ls -l test/tmp
+  - ./install.sh
 notifications:
   email:
     recipients:
