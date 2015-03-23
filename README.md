@@ -48,6 +48,17 @@ gulp test -t test/some.spec.coffee
 
 Happy testing!
 
+## Test [![Build Status](https://img.shields.io/travis/orlin/gulp-npm-test
+.svg?style=flat)](http://travis-ci.org/orlin/gulp-npm-test)
+
+```sh
+install.sh #once
+npm test
+```
+
+Though `gulp-npm-test` should work on any platform, its tests probably
+need a _*nix_ to run - Linux, Mac, etc.
+
 ## License
 
 [MIT](http://orlin.mit-license.org)

@@ -1,4 +1,6 @@
 var gulp = require('gulp')
+var test = require('../index.js')
 
-// the default task
-require('../index.js')(gulp)
+test(gulp)
+test(gulp, {taskName: 'named-test'})
+test(gulp, {taskName: 'mocha-test', testCmd: 'node_modules/.bin/mocha'})
