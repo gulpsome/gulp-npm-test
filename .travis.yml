@@ -11,7 +11,8 @@ install:
   - npm install -g batshit gulp
   - cd test && npm install
   - cd ..
-  - node -e "console.log('the tmp dir is:', require('os').tmpdir())"
+  - mkdir test/tmp
+  - ls -l test/tmp
 notifications:
   email:
     recipients:

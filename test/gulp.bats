@@ -1,9 +1,5 @@
 load $(which batshit-helpers)
 
-# because bats changes the $TMP with:
-# export TMP="$BATS_TEST_DIRNAME/tmp"
-mkdir "$TMP" # so that v8flags - via liftoff / gulp doesn't throw
-
 @test "gulp-npm-test should create a test task for npm test" {
   run gulp test --gulpfile "$(pwd)/test/gulpfile.js"
   assert_success
