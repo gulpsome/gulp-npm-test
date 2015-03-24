@@ -17,8 +17,9 @@ gulp="$(pwd)/test/node_modules/.bin/gulp --gulpfile $(pwd)/test/gulpfile.js"
   assert_success
 }
 
+# NOTE: the following test requires testCmd being set, or node > 0.10
 @test "can ask a gulp-npm-test task to run a file path or a glob" {
-  run $gulp test -t test/test/test-me*
+  run $gulp mocha-test -t test/test-me* # depends on testCmd, ok mocha
   assert_success
   assert_output_contains "1..1" # only 1 test has been run
 }
