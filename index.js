@@ -1,6 +1,7 @@
 var path = require('path')
 var merge = require('lodash.merge')
 var run = require('childish-process')
+var notifications = require(path.join(__dirname, './notifications.json'))
 var args = require('yargs')
   .string("t").alias("t", "--test").describe("t", "tell gulp what to test")
   .argv
@@ -9,18 +10,19 @@ module.exports = function (gulp, opts) {
   var o = opts || {}
   o.taskName = o.taskName || 'test'
   o.testCmd = o.testCmd || 'npm test'
-  o.testsRe = o.testsRe || /\.js$/
+  o.testsRe = o.testsRe || /test\/.+\.js$/
   o.templateFull = o.templateFull || 'test'
   o.templatePart = o.templatePart || 'test-part'
-  run = run({
-    childish: {
-      templates: merge({},
-      require(path.join(__dirname, './notifications.json')),
-      (o.templates) ? require(path.join(process.cwd(), o.templates)) : {})
-    }
-  })
 
   function test(what) {
+    // TODO: there seems to be a childish-process bug - can't setup run outside?
+    run = run({
+      childish: {
+        templates: merge({},
+        notifications,
+        (o.templates) ? require(path.join(process.cwd(), o.templates)) : {})
+      }
+    })
     var cmd = o.testCmd
     var template = o.templateFull
     if (typeof what === 'object') {

@@ -9,7 +9,7 @@
     "package.json",
     "notifications"
   ],
-  "version": "0.0.0-2",
+  "version": "0.0.0-3",
   "repository": {
     "type": "git",
     "url": "git://github.com/orlin/gulp-npm-test.git"
@@ -26,11 +26,15 @@
     "lodash.merge": "^3.0.3",
     "yargs": "^3.5.4"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "batshit": "0.1.0-1"
+  },
   "jshintConfig": {
     "asi": true
   },
-  "scripts": {},
+  "scripts": {
+    "test": "batshit -t test"
+  },
   "engines": {
     "node": ">= 0.10.0"
   },
