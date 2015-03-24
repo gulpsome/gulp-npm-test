@@ -17,8 +17,8 @@ gulp="$(pwd)/test/node_modules/.bin/gulp --gulpfile $(pwd)/test/gulpfile.js"
   assert_success
 }
 
-@test "can ask a gulp-npm-test task to run a file path or glob for node >= 0.12" {
-  run $gulp test -t test/test-me.js # 0.10.x doesn't take test/test-me*
+@test "can ask a gulp-npm-test task to run a file path or a glob" {
+  run $gulp test -t test/test/test-me*
   assert_success
   assert_output_contains "1..1" # only 1 test has been run
 }
