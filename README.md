@@ -42,13 +42,16 @@ The test task can take a glob / path to a specific test with a `-t` or `--test`,
 though you probably need to set the test `testCmd` option, and use a framework
 that would be ok with it:
 
-```shell
+```sh
 gulp test -t test/some.spec.coffee
 ```
 
+See [childish-process](https://github.com/orlin/childish-process)
+for templates / options / notifications.
+
 Happy testing!
 
-## Test [![Build Status](https://img.shields.io/travis/orlin/gulp-npm-test.svg?style=flat)](http://travis-ci.org/orlin/gulp-npm-test)
+## Tests [![Build Status](https://img.shields.io/travis/orlin/gulp-npm-test.svg?style=flat)](http://travis-ci.org/orlin/gulp-npm-test)
 
 ```sh
 install.sh #once
