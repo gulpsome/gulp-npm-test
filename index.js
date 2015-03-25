@@ -12,7 +12,6 @@ var path = require('path'),
 module.exports = function (gulp, opts) {
   var def = R.merge({
         taskName: 'test',
-        taskHelp: 'A gulp-npm-test task.',
         testCmd: 'npm test',
         testsRe: /test\/.+\.js$/,
         templateFull: 'test',
@@ -52,10 +51,11 @@ module.exports = function (gulp, opts) {
     run(cmd, {childish: {template: template}})
   }
 
-  if (detectHelp(gulp.tasks))
-    gulp.task(o.taskName, o.taskHelp, test)
-  else
-    gulp.task(o.taskName, test)
+  if (detectHelp(gulp.tasks)) {
+    var help = o.taskHelp || 'A gulp-npm-test task for ' + '`' + o.testCmd + '`.'
+    gulp.task(o.taskName, help, test)
+  }
+  else gulp.task(o.taskName, test)
 
   return test // can use with gulp-watch
 }
