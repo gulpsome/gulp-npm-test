@@ -1,6 +1,7 @@
 "use strict"
 
 var path = require('path'),
+    R = require('ramda'),
     merge = require('lodash.merge'),
     run = require('childish-process'),
     notifications = require(path.join(__dirname, './notifications.json')),
@@ -9,12 +10,18 @@ var path = require('path'),
       .argv
 
 module.exports = function (gulp, opts) {
-  var o = opts || {}
-  o.taskName = o.taskName || 'test'
-  o.testCmd = o.testCmd || 'npm test'
-  o.testsRe = o.testsRe || /test\/.+\.js$/
-  o.templateFull = o.templateFull || 'test'
-  o.templatePart = o.templatePart || 'test-part'
+  var def = R.merge({
+        taskName: 'test',
+        taskHelp: 'A gulp-npm-test task.',
+        testCmd: 'npm test',
+        testsRe: /test\/.+\.js$/,
+        templateFull: 'test',
+        templatePart: 'test-part'
+      }),
+      o = def(opts || {}),
+      detectHelp = function (tasks) {
+        return R.is(Object, R.path(['help', 'help'], tasks))
+      }
 
   function test(what) {
     // TODO: there seems to be a childish-process bug - can't setup run outside?
@@ -45,6 +52,10 @@ module.exports = function (gulp, opts) {
     run(cmd, {childish: {template: template}})
   }
 
-  gulp.task(o.taskName, test)
+  if (detectHelp(gulp.tasks))
+    gulp.task(o.taskName, o.taskHelp, test)
+  else
+    gulp.task(o.taskName, test)
+
   return test // can use with gulp-watch
 }
