@@ -1,10 +1,12 @@
-var path = require('path')
-var merge = require('lodash.merge')
-var run = require('childish-process')
-var notifications = require(path.join(__dirname, './notifications.json'))
-var args = require('yargs')
-  .string("t").alias("t", "--test").describe("t", "tell gulp what to test")
-  .argv
+"use strict"
+
+var path = require('path'),
+    merge = require('lodash.merge'),
+    run = require('childish-process'),
+    notifications = require(path.join(__dirname, './notifications.json')),
+    args = require('yargs')
+      .string("t").alias("t", "--test").describe("t", "tell gulp what to test")
+      .argv
 
 module.exports = function (gulp, opts) {
   var o = opts || {}
