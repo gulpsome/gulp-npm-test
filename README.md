@@ -39,6 +39,9 @@ gulp.task('test:watch', function() {
 })
 ```
 
+In the above example if `testsRe` isn't set -- all tests will be run each time,
+no matter which file triggers the test call.
+
 The test task can take a glob / path to a specific test with a `-t` or `--test`,
 though you probably need to set the test `testCmd` option, and use a framework
 that would be ok with it:

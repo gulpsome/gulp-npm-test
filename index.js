@@ -1,12 +1,11 @@
-"use strict"
+'use strict'
 
 var path = require('path'),
     R = require('ramda'),
     merge = require('lodash.merge'),
-    run = require('childish-process'),
     notifications = require(path.join(__dirname, './notifications.json')),
     args = require('yargs')
-      .string("t").alias("t", "--test").describe("t", "tell gulp what to test")
+      .string('t').alias('t', '--test').describe('t', 'tell gulp what to test')
       .argv
 
 module.exports = function (gulp, opts) {
@@ -20,24 +19,26 @@ module.exports = function (gulp, opts) {
       o = def(opts || {}),
       detectHelp = function (tasks) {
         return R.is(Object, R.path(['help', 'help'], tasks))
-      }
+      },
+      run = require('childish-process')({
+        childish: {
+          templates: merge({},
+            notifications,
+            (o.templates) ? require(path.join(process.cwd(), o.templates)) : {}
+          )
+        }
+      })
 
   function test(what) {
-    // TODO: there seems to be a childish-process bug - can't setup run outside?
-    run = run({
-      childish: {
-        templates: merge({},
-        notifications,
-        (o.templates) ? require(path.join(process.cwd(), o.templates)) : {})
-      }
-    })
     var cmd = o.testCmd
     var template = o.templateFull
     if (typeof what === 'object') {
       // https://github.com/wearefractal/vinyl
-      if (what.event == 'change' && o.testsRe.test(what.path)) {
-        cmd += ' ' + what.path
-        template = o.templatePart
+      if (what.event == 'change') {
+        if (o.testsRe.test(what.path)) {
+          cmd += ' ' + what.path
+          template = o.templatePart
+        }
       }
       else {
         // console.log('ignoring', what.path, what.event)
@@ -48,6 +49,7 @@ module.exports = function (gulp, opts) {
       cmd += ' ' + args.t
       template = o.templatePart
     }
+
     run(cmd, {childish: {template: template}})
   }
 
