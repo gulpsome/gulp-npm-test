@@ -11,7 +11,7 @@ var path = require('path'),
 module.exports = function (gulp, opts) {
   var def = R.merge({
         taskName: 'test',
-        testCmd: 'npm test',
+        withoutNpmRun: true,
         testsRe: /test\/.+\.js$/,
         templateFull: 'test',
         templatePart: 'test-part'
@@ -20,6 +20,8 @@ module.exports = function (gulp, opts) {
       detectHelp = function (tasks) {
         return R.is(Object, R.path(['help', 'help'], tasks))
       },
+      scripts = require(path.join(process.cwd(), 'package.json')).scripts,
+      command = (scripts.test && o.withoutNpmRun) ? scripts.test : 'npm test',
       run = require('childish-process')({
         childish: {
           templates: merge({},
@@ -30,8 +32,9 @@ module.exports = function (gulp, opts) {
       })
 
   function test(what) {
-    var cmd = o.testCmd
-    var template = o.templateFull
+    var cmd = command,
+        template = o.templateFull
+
     if (typeof what === 'object') {
       // https://github.com/wearefractal/vinyl
       if (what.event == 'change') {
@@ -54,7 +57,7 @@ module.exports = function (gulp, opts) {
   }
 
   if (detectHelp(gulp.tasks)) {
-    var help = o.taskHelp || 'A gulp-npm-test task for ' + '`' + o.testCmd + '`.'
+    var help = o.taskHelp || 'A gulp-npm-test task for ' + '`' + command + '`.'
     gulp.task(o.taskName, help, test)
   }
   else gulp.task(o.taskName, test)
