@@ -14,6 +14,8 @@ var gulp = require('gulp')
 require('gulp-npm-test')(gulp)
 ```
 
+### Configure
+
 It takes configuration options - here is an example, loosely borrowed from
 [datomiki](https://github.com/datomicon/datomiki)'s `gulpfile.js`:
 
