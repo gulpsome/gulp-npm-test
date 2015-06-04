@@ -24,7 +24,7 @@ module.exports = function (gulp, opts) {
         var matches = str.match(/^(\.?\/?node_modules\/.bin\/)?(.*)$/)
         return matches[1] ? matches[2] : str
       },
-      scripts = require(path.join(process.cwd(), 'package.json')).scripts,
+      scripts = require(path.join(process.cwd(), 'package.json')).scripts || {},
       command = (scripts.test && o.withoutNpmRun) ? scripts.test : 'npm test',
       run = require('childish-process')({
         childish: {
