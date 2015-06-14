@@ -2,6 +2,8 @@
 
 var path = require('path'),
     R = require('ramda'),
+    pkg = require('stamina').pkg,
+    detectHelp = require('stamina').gulpIsHelpful,
     merge = require('lodash.merge'),
     notifications = require(path.join(__dirname, './notifications.json')),
     args = require('yargs')
@@ -17,14 +19,11 @@ module.exports = function (gulp, opts) {
         templatePart: 'test-part'
       }),
       o = def(opts || {}),
-      detectHelp = function (tasks) {
-        return R.is(Object, R.path(['help', 'help'], tasks))
-      },
       shortCommand = function (str) {
         var matches = str.match(/^(\.?\/?node_modules\/.bin\/)?(.*)$/)
         return matches[1] ? matches[2] : str
       },
-      scripts = require(path.join(process.cwd(), 'package.json')).scripts || {},
+      scripts = pkg.scripts || {},
       command = (scripts.test && o.withoutNpmRun) ? scripts.test : 'npm test',
       run = require('childish-process')({
         childish: {
@@ -60,7 +59,7 @@ module.exports = function (gulp, opts) {
     run(cmd, {childish: {template: template}})
   }
 
-  if (detectHelp(gulp.tasks)) {
+  if (detectHelp(gulp)) {
     var help = o.taskHelp || 'A gulp-npm-test task, using ' + '`' + shortCommand(command) + '`.'
     gulp.task(o.taskName, help, test)
   }
