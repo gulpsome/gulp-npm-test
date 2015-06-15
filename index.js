@@ -3,7 +3,7 @@
 var path = require('path'),
     R = require('ramda'),
     pkg = require('stamina').pkg,
-    detectHelp = require('stamina').gulpIsHelpful,
+    gulpTask = require('stamina').gulpTask,
     merge = require('lodash.merge'),
     notifications = require(path.join(__dirname, './notifications.json')),
     args = require('yargs')
@@ -59,11 +59,8 @@ module.exports = function (gulp, opts) {
     run(cmd, {childish: {template: template}})
   }
 
-  if (detectHelp(gulp)) {
-    var help = o.taskHelp || 'A gulp-npm-test task, using ' + '`' + shortCommand(command) + '`.'
-    gulp.task(o.taskName, help, test)
-  }
-  else gulp.task(o.taskName, test)
+  var help = o.taskHelp || 'A gulp-npm-test task, using ' + '`' + shortCommand(command) + '`.'
+  gulpTask(gulp, o.taskName, help, test)
 
   return test // can use with gulp-watch
 }
