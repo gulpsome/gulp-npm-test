@@ -25,6 +25,7 @@
     "childish-process": "0.0.4-alpha.1",
     "lodash.merge": "^3.0.3",
     "ramda": "^0.13.0",
+    "stamina": "0.0.3",
     "yargs": "^3.5.4"
   },
   "devDependencies": {
