@@ -67,6 +67,11 @@ npm test
 Though `gulp-npm-test` should work on any platform, its tests probably
 need a _*nix_ to run - Linux, Mac, etc.
 
+## Dependencies
+
+[![Dependency Status](https://david-dm.org/orlin/beverage.svg)](https://david-dm.org/orlin/gulp-npm-test)
+[![devDependency Status](https://david-dm.org/orlin/beverage/dev-status.svg)](https://david-dm.org/orlin/gulp-npm-test#info=devDependencies)
+
 ## License
 
 [MIT](http://orlin.mit-license.org)
