@@ -14,6 +14,8 @@ var gulp = require('gulp')
 require('gulp-npm-test')(gulp)
 ```
 
+### Configure
+
 It takes configuration options - here is an example, loosely borrowed from
 [datomiki](https://github.com/datomicon/datomiki)'s `gulpfile.js`:
 
@@ -64,6 +66,11 @@ npm test
 
 Though `gulp-npm-test` should work on any platform, its tests probably
 need a _*nix_ to run - Linux, Mac, etc.
+
+## Dependencies
+
+[![Dependency Status](https://david-dm.org/orlin/beverage.svg)](https://david-dm.org/orlin/gulp-npm-test)
+[![devDependency Status](https://david-dm.org/orlin/beverage/dev-status.svg)](https://david-dm.org/orlin/gulp-npm-test#info=devDependencies)
 
 ## License
 
