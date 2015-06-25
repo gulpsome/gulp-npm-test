@@ -4,6 +4,7 @@ var path = require('path'),
     R = require('ramda'),
     pkg = require('stamina').pkg,
     gulpTask = require('stamina').gulpTask,
+    cause = require('gulp-cause'),
     merge = require('lodash.merge'),
     notifications = require(path.join(__dirname, './notifications.json')),
     args = require('yargs')
@@ -62,5 +63,9 @@ module.exports = function (gulp, opts) {
   var help = o.taskHelp || 'A gulp-npm-test task, using ' + '`' + shortCommand(command) + '`.'
   gulpTask(gulp, o.taskName, help, test)
 
-  return test // can use with gulp-watch
+  if (o.watch) {
+    cause(gulp, [o.taskName, o.watch])
+  }
+
+  return gulp
 }

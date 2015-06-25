@@ -22,7 +22,7 @@ It takes configuration options - here is an example, loosely borrowed from
 ```javascript
 var test = require('gulp-npm-test')(gulp, {
   taskName: 'test', // this is the default
-  taskHelp: 'A test task.', // irrelevant if not using npm-help or gulp-npm-run
+  taskHelp: 'A test task.', // irrelevant if not using beverage or gulp-help
   withoutNpmRun: true, // the default, otherwise runs `npm test`
   testsRe: /\.spec\.coffee$/, // a RegExp to match test files with (for watching)
   templates: 'your-custom-overrides.json', // deep-merged into notifications.json
