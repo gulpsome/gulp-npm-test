@@ -20,10 +20,11 @@ It takes configuration options - here is an example, loosely borrowed from
 [datomiki](https://github.com/datomicon/datomiki)'s `gulpfile.js`:
 
 ```javascript
-var test = require('gulp-npm-test')(gulp, {
+var gulp = require('gulp-npm-test')(gulp, {
   taskName: 'test', // this is the default
-  taskHelp: 'A test task.', // irrelevant if not using npm-help or gulp-npm-run
+  taskHelp: 'A test task.', // irrelevant if not using beverage or gulp-help
   withoutNpmRun: true, // the default, otherwise runs `npm test`
+  watch: ['index.js', 'test/*.spec.coffee'], // create a test:watch task using gulp-watch
   testsRe: /\.spec\.coffee$/, // a RegExp to match test files with (for watching)
   templates: 'your-custom-overrides.json', // deep-merged into notifications.json
   templateFull: 'test', // for running all the tests
@@ -31,18 +32,16 @@ var test = require('gulp-npm-test')(gulp, {
 })
 ```
 
-All of the above options are _optional_ if the defaults turn out good-enough.
-One could reuse the test var from above to setup a watch-and-test task:
-
-```javascript
-var watch = require('gulp-watch')
-gulp.task('test:watch', function() {
-  watch(['./index.js', 'test/*.spec.coffee'], test)
-})
-```
+#### Watching
 
 In the above example if `testsRe` isn't set -- all tests will be run each time,
 no matter which file triggers the test call.
+
+One could setup more custom watching by using [gulp-cause](https://github.com/orlin/gulp-cause) directly or otherwise.
+
+#### Further
+
+All of the above options are _optional_ if the defaults turn out good-enough.
 
 The test task can take a glob / path to a specific test with a `-t` or `--test`,
 though you probably need to set the test `testCmd` option, and use a framework
