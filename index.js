@@ -64,7 +64,7 @@ module.exports = function (gulp, opts) {
   gulpTask(gulp, o.taskName, help, test)
 
   if (o.watch) {
-    cause(gulp, [o.taskName, o.watch])
+    cause(gulp, [o.taskName, [o.watch, test]])
   }
 
   return gulp
