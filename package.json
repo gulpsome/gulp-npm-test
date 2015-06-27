@@ -25,9 +25,9 @@
     "childish-process": "0.0.4-alpha.1",
     "gulp-cause": "0.0.5",
     "lodash.merge": "^3.3.1",
-    "ramda": "^0.15.0",
+    "ramda": "^0.15.1",
     "stamina": "0.0.3",
-    "yargs": "^3.11.0"
+    "yargs": "^3.13.0"
   },
   "devDependencies": {
     "batshit": "0.1.0-1"
