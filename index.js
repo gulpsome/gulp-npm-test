@@ -2,8 +2,8 @@
 
 var path = require('path'),
     R = require('ramda'),
-    pkg = require('stamina').pkg,
-    gulpTask = require('stamina').gulpTask,
+    pkg = require('be-goods').pkg,
+    gulpTask = require('be-goods').gulpTask,
     cause = require('gulp-cause'),
     merge = require('lodash.merge'),
     notifications = require(path.join(__dirname, './notifications.json')),
