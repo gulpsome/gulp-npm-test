@@ -2,8 +2,8 @@
 
 var path = require('path'),
     R = require('ramda'),
-    pkg = require('stamina').pkg,
-    gulpTask = require('stamina').gulpTask,
+    pkg = require('be-goods').pkg,
+    gulpTask = require('be-goods').gulpTask,
     cause = require('gulp-cause'),
     merge = require('lodash.merge'),
     notifications = require(path.join(__dirname, './notifications.json')),
@@ -64,7 +64,13 @@ module.exports = function (gulp, opts) {
   gulpTask(gulp, o.taskName, help, test)
 
   if (o.watch) {
-    cause(gulp, [o.taskName, [o.watch, test]])
+    if (R.type(o.watch) === 'String') o.watch = [o.watch]
+    if (R.type(o.watch) === 'Array') cause(gulp, [o.taskName, [o.watch, test]])
+    else {
+      console.error('The watch option of gulp-npm-test must be a String or Array.')
+      console.error('Its value of `' + o.watch.toString() + '` is being ignored.')
+      console.error('The test:watch task has not been added.')
+    }
   }
 
   return gulp
