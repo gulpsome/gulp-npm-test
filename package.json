@@ -12,7 +12,7 @@
   "version": "0.0.2-1",
   "repository": {
     "type": "git",
-    "url": "git://github.com/orlin/gulp-npm-test.git"
+    "url": "git@github.com:gulpsome/gulp-npm-test.git"
   },
   "bugs": {
     "mail": "om@soundsapiens.com",
