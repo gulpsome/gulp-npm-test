@@ -15,7 +15,7 @@ module.exports = function (gulp, opts) {
   var def = R.merge({
         taskName: 'test',
         withoutNpmRun: true,
-        testsRe: /test\/.+\.js$/,
+        testsRe: 'test\/.+\.js$',
         templateFull: 'test',
         templatePart: 'test-part'
       }),
@@ -42,7 +42,7 @@ module.exports = function (gulp, opts) {
     if (typeof what === 'object') {
       // https://github.com/wearefractal/vinyl
       if (what.event == 'change') {
-        if (o.testsRe.test(what.path)) {
+        if ((new RegExp(o.testsRe)).test(what.path)) {
           cmd += ' ' + what.path
           template = o.templatePart
         }
