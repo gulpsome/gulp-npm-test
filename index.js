@@ -16,7 +16,7 @@ module.exports = function (gulp, opts) {
   var def = R.merge({
         taskName: 'test',
         withoutNpmRun: true,
-        testsRe: 'test\/.+\.js$',
+        testsRe: 'test\\/.+\\.js$',
         templateFull: 'test',
         templatePart: 'test-part'
       }),
