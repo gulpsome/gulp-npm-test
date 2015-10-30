@@ -25,7 +25,7 @@ var gulp = require('gulp-npm-test')(gulp, {
   taskHelp: 'A test task.', // irrelevant if not using beverage or gulp-help
   withoutNpmRun: true, // the default, otherwise runs `npm test`
   watch: ['index.js', 'test/*.spec.coffee'], // create a test:watch task using gulp-watch
-  testsRe: /\.spec\.coffee$/, // a RegExp to match test files with (for watching)
+  testsRe: '\\.spec\\.coffee$', // a RegExp (String) to match test files with (for watching)
   templates: 'your-custom-overrides.json', // deep-merged into notifications.json
   templateFull: 'test', // for running all the tests
   templatePart: 'test-part' // partial testing (e.g. test file change event)
@@ -35,9 +35,9 @@ var gulp = require('gulp-npm-test')(gulp, {
 #### Watching
 
 In the above example if `testsRe` isn't set -- all tests will be run each time,
-no matter which file triggers the test call.
+no matter which file triggers the test call.  Notice the `testsRe` option is expected to  be a String and therefore '\' has to be escaped as '\\' -- e.g. `/\./` is `'\\.'`.
 
-One could setup more custom watching by using [gulp-cause](https://github.com/orlin/gulp-cause) directly or otherwise.
+One could setup more custom watching by using [gulp-cause](https://github.com/gulpsome/gulp-cause) directly or otherwise.
 
 #### Further
 
@@ -68,8 +68,8 @@ need a _*nix_ to run - Linux, Mac, etc.
 
 ## Dependencies
 
-[![Dependency Status](https://david-dm.org/orlin/beverage.svg)](https://david-dm.org/orlin/gulp-npm-test)
-[![devDependency Status](https://david-dm.org/orlin/beverage/dev-status.svg)](https://david-dm.org/orlin/gulp-npm-test#info=devDependencies)
+[![Dependency Status](https://david-dm.org/gulpsome/gulp-npm-test.svg)](https://david-dm.org/gulpsome/gulp-npm-test)
+[![devDependency Status](https://david-dm.org/gulpsome/gulp-npm-test/dev-status.svg)](https://david-dm.org/gulpsome/gulp-npm-test#info=devDependencies)
 
 ## License
 

@@ -4,6 +4,7 @@ var path = require('path'),
     R = require('ramda'),
     pkg = require('be-goods').pkg,
     gulpTask = require('be-goods').gulpTask,
+    logger = require('be-goods').logger,
     cause = require('gulp-cause'),
     merge = require('lodash.merge'),
     notifications = require(path.join(__dirname, './notifications.json')),
@@ -15,7 +16,7 @@ module.exports = function (gulp, opts) {
   var def = R.merge({
         taskName: 'test',
         withoutNpmRun: true,
-        testsRe: /test\/.+\.js$/,
+        testsRe: 'test\\/.+\\.js$',
         templateFull: 'test',
         templatePart: 'test-part'
       }),
@@ -35,6 +36,12 @@ module.exports = function (gulp, opts) {
         }
       })
 
+  if (typeof o.testsRe !== 'string') {
+    // NOTE: this could become a minimatch glob...
+    // Perhaps rename & repurpose this for deprecation warnings regarding that too.
+    logger.warn('Option testsRe must be of type String, for the RegExp constructor.')
+  }
+
   function test(what) {
     var cmd = command,
         template = o.templateFull
@@ -42,7 +49,7 @@ module.exports = function (gulp, opts) {
     if (typeof what === 'object') {
       // https://github.com/wearefractal/vinyl
       if (what.event == 'change') {
-        if (o.testsRe.test(what.path)) {
+        if ((new RegExp(o.testsRe)).test(what.path)) {
           cmd += ' ' + what.path
           template = o.templatePart
         }
