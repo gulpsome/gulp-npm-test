@@ -9,14 +9,14 @@
     "package.json",
     "notifications"
   ],
-  "version": "0.0.2-1",
+  "version": "0.0.3",
   "repository": {
     "type": "git",
     "url": "git@github.com:gulpsome/gulp-npm-test.git"
   },
   "bugs": {
     "mail": "om@soundsapiens.com",
-    "url": "https://github.com/orlin/gulp-npm-test/issues"
+    "url": "https://github.com/gulpsome/gulp-npm-test/issues"
   },
   "author": "Orlin M Bozhinov <om@soundsapiens.com>",
   "contributors": [],

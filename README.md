@@ -37,7 +37,7 @@ var gulp = require('gulp-npm-test')(gulp, {
 In the above example if `testsRe` isn't set -- all tests will be run each time,
 no matter which file triggers the test call.  Notice the `testsRe` option is expected to  be a String and therefore '\' has to be escaped as '\\' -- e.g. `/\./` is `'\\.'`.
 
-One could setup more custom watching by using [gulp-cause](https://github.com/orlin/gulp-cause) directly or otherwise.
+One could setup more custom watching by using [gulp-cause](https://github.com/gulpsome/gulp-cause) directly or otherwise.
 
 #### Further
 
@@ -68,8 +68,8 @@ need a _*nix_ to run - Linux, Mac, etc.
 
 ## Dependencies
 
-[![Dependency Status](https://david-dm.org/orlin/beverage.svg)](https://david-dm.org/orlin/gulp-npm-test)
-[![devDependency Status](https://david-dm.org/orlin/beverage/dev-status.svg)](https://david-dm.org/orlin/gulp-npm-test#info=devDependencies)
+[![Dependency Status](https://david-dm.org/gulpsome/gulp-npm-test.svg)](https://david-dm.org/gulpsome/gulp-npm-test)
+[![devDependency Status](https://david-dm.org/gulpsome/gulp-npm-test/dev-status.svg)](https://david-dm.org/gulpsome/gulp-npm-test#info=devDependencies)
 
 ## License
 
