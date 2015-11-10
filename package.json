@@ -22,7 +22,7 @@
   "contributors": [],
   "main": "index.js",
   "dependencies": {
-    "be-goods": "0.0.3-1",
+    "be-goods": "0.0.4",
     "childish-process": "0.0.4-1",
     "gulp-cause": "0.0.5-1",
     "lodash.merge": "^3.3.2",

@@ -56,7 +56,7 @@ for templates / options / notifications.
 
 Happy testing!
 
-## Tests [![Build Status](https://img.shields.io/travis/orlin/gulp-npm-test.svg?style=flat)](http://travis-ci.org/orlin/gulp-npm-test)
+## Tests [![Build Status](https://img.shields.io/travis/gulpsome/gulp-npm-test.svg?style=flat)](http://travis-ci.org/gulpsome/gulp-npm-test)
 
 ```sh
 install.sh #once
@@ -66,7 +66,7 @@ npm test
 Though `gulp-npm-test` should work on any platform, its tests probably
 need a _*nix_ to run - Linux, Mac, etc.
 
-## Dependencies
+## Develop
 
 [![Dependency Status](https://david-dm.org/gulpsome/gulp-npm-test.svg)](https://david-dm.org/gulpsome/gulp-npm-test)
 [![devDependency Status](https://david-dm.org/gulpsome/gulp-npm-test/dev-status.svg)](https://david-dm.org/gulpsome/gulp-npm-test#info=devDependencies)
