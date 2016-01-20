@@ -1,5 +1,9 @@
 # gulp-npm-test
 
+[![version npm](https://img.shields.io/npm/v/gulp-npm-test.svg?style=flat-square)](https://www.npmjs.com/package/gulp-npm-test)
+[![dependencies](https://img.shields.io/david/gulpsome/gulp-npm-test.svg?style=flat-square)](https://david-dm.org/gulpsome/gulp-npm-test)
+[![build status](https://img.shields.io/travis/gulpsome/gulp-npm-test.svg?style=flat-square)](http://travis-ci.org/gulpsome/gulp-npm-test)
+
 A gulp task to run tests, defaults to `npm test`,
 with automatic notifications + various options / configuration possibilities...
 
