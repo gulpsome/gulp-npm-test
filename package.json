@@ -3,11 +3,14 @@
   "description": "effortless gulp test task(s) + notifications",
   "keywords": [
     "gulp",
+    "beverage",
     "test",
     "task",
     "npm",
     "package.json",
-    "notifications"
+    "notifications",
+    "workflow",
+    "productivity"
   ],
   "version": "0.0.4",
   "repository": {
